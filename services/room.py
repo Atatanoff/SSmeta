@@ -6,10 +6,11 @@ from services.finddiagonal import diag
             h - высота комнаты'''
 
 class Room:
-    def __init__(self, angle: int, h: int) -> None:
+    def __init__(self, angle: int) -> None:
+        self.name = ''
         self.angle_side_room = {chr(i+65)+chr(i+66): 0 for i in range(angle)}
         self.diagonal_room = diag(angle)
-        self.height_room = h
+        self.height_room = 0
         self.perimetr = 0
         self.room_area = 0
         self.walls_area = 0
@@ -19,6 +20,9 @@ class Room:
     def get_side_room(self, fun):
         s = fun()
         print(s)
+
+    def __str__(self) -> str:
+        return self.name
 
         
 '''Класс Окно.
