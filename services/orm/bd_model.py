@@ -1,16 +1,11 @@
-from peewee import Model, CharField, DateField, SqliteDatabase, IntegerField,\
-      ForeignKeyField, TextField, BigBitField, BooleanField, BigIntegerField
-from dataclasses import dataclass
+from peewee import *
 
-
-@dataclass
-class DataBass:
-    db: SqliteDatabase = SqliteDatabase('data/bd.db')
+db: SqliteDatabase = SqliteDatabase('data/bd.db')
 
 
 class BaseModel(Model):
     class Meta:
-        database = DataBass.db
+        database = db
 
 
 class User(BaseModel):
@@ -97,17 +92,6 @@ class Estimate_works(BaseModel):
     quantity = IntegerField()
 
 
-def create_bd():
-    db = DataBass.db
-    db.connect()
+if __name__ == '__main__':
     db.create_tables([Estimate, Room, User, WinOpening, DoorOpening, BalconyDoor, \
                       Price, Estimate_works])
-    db.close()
-
-
-
-def load_vd():
-    pass
-
-if __name__ == '__main__':
-    create_bd()

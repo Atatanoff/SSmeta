@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher
 from config_data.config import load_config
 from handlers import start_handlers, new_estimate_handlers, other_handlers
 from keyboards.menu import set_main_menu
-from services.orm.bd_model import create_bd
+
 
 API_TOKEN = load_config().tg_bot.token
 

@@ -11,12 +11,12 @@ from keyboards.button import create_estimates_kb, room_kb
 from bot_fsm.fsm_class import FSMWorkEstimate
 from services.estimate import rooms
 from services.room import Room
-from services.orm.bd_model import DataBass
+
 
 
 
 router = Router()
-bd = DataBass.db
+
 
 storage = RedisStorage('localhost')
 
@@ -30,7 +30,7 @@ async def new_estimate(callback: CallbackQuery, state: FSMContext):
 
 @router.message(StateFilter(FSMWorkEstimate.create_est))
 async def creat_est(message: Message, state: FSMContext):
-    bd.connect()
+    
     #est = Estimates(name=message.text, date_create=date)
     await message.answer(text=rooms.name, reply_markup=create_estimates_kb())
     await state.clear()

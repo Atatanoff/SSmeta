@@ -1,14 +1,17 @@
-from services.room import Room
 
-question = ("Название комнаты",
-            "Кол-во углов",
-            "Введите сторону")
+from loguru import logger
 
+from res.values import string
+
+
+
+@logger.catch  
 def main():
-    name_room = input(question[0])
-    quantity_angle = int(input(question[1]))
-    for i in range(quantity_angle):
-        pass
-        
+    for key, val in string.QUESTIONS.items():
+        vars()[key] = val
+
+    logger.debug(f"{count_angel}")
+
+
 if __name__ == '__main__':
     main()
